@@ -1,0 +1,105 @@
+<div id="signupbox" style="margin-top:50px"
+     class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-title">Sign Up</div>
+            <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                <a routerLink="">Sign In</a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form [formGroup]="registerForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+                <div id="signupalert" style="display:none" class="alert alert-danger">
+                    <p>Error:</p>
+                    <span></span>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': formErrors.username}">
+                    <label for="email" class="col-md-3 control-label">Username</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               formControlName="username"
+                               id="username"
+                               name="username"
+                               placeholder="Username"
+                               required>
+                        <span class="help-block" *ngIf="formErrors.username">
+                            {{ formErrors.username }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+                    <label for="email" class="col-md-3 control-label">Email</label>
+                    <div class="col-md-9">
+                        <input type="text"
+                               class="form-control"
+                               formControlName="email"
+                               id="email"
+                               name="email"
+                               placeholder="Email Address"
+                               required>
+                        <span class="help-block" *ngIf="formErrors.email">
+                            {{ formErrors.email }}
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                    <div class="col-md-9">
+                        <input formControlName="firstName" type="text" class="form-control" id="firstname" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                    <div class="col-md-9">
+                        <input formControlName="lastName" type="text" class="form-control" id="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+                <div formGroupName="passwords">
+                    <div class="form-group" [ngClass]="{'has-error': formErrors.password}">
+                        <label for="password" class="col-md-3 control-label">Password</label>
+                        <div class="col-md-9">
+                            <input id="password"
+                                   type="password"
+                                   class="form-control"
+                                   name="password"
+                                   formControlName="password"
+                                   placeholder="Password"
+                                   required>
+                        <span class="help-block" *ngIf="formErrors.password">
+                            {{ formErrors.password }}
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error': formErrors.repeatPassword || formErrors.passwords}">
+                        <label for="password" class="col-md-3 control-label">Repeat Password</label>
+                        <div class="col-md-9">
+                            <input id="repeatPassword"
+                                   type="password"
+                                   class="form-control"
+                                   name="repeatPassword"
+                                   formControlName="repeatPassword"
+                                   placeholder="Repeat Password"
+                                   required>
+                        <span class="help-block" *ngIf="formErrors.repeatPassword">
+                            {{ formErrors.repeatPassword }}
+                        </span>
+                        <span class="help-block" *ngIf="formErrors.passwords">
+                            {{ formErrors.passwords }}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- Button -->
+                    <div class="col-md-offset-3 col-md-9">
+                        <input id="btn-signup" type="submit" class="btn btn-info" value="Sign Up"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
