@@ -8,6 +8,12 @@ import { AppSettings } from './app-settings';
 @Injectable()
 export class UserService {
     constructor(private http: Http) {}
+    
+    login(credentials) {
+        return this.http.post(`${AppSettings.API_ENDPOINT}/api-token-auth/`, credentials)
+            .toPromise()
+            .then(response => response.json());
+    }
 
     register(user) {
         return this.http.post(`${AppSettings.API_ENDPOINT}/users/register/`, user)
