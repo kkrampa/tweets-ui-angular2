@@ -8,13 +8,13 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 
 import { AppComponent }   from './app.component';
-import { LoginComponent } from "./login.component";
-import { RegisterComponent } from "./register.component";
+import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 
 import { UserService } from './user.service';
-import {HomeComponent} from "./home.component";
-import {AuthGuardService} from "./auth-guard.service";
-import {AuthService} from "./auth.service";
+import {HomeComponent} from './home.component';
+import {AuthGuardService} from './auth-guard.service';
+import {AuthService} from './auth.service';
 
 @NgModule({
   imports: [

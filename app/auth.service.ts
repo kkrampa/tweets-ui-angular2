@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-    loggedIn() : boolean {
+    loggedIn(): boolean {
         return tokenNotExpired();
     }
 }
