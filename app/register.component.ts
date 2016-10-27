@@ -15,7 +15,7 @@ import { UserService } from './user.service';
 })
 export class RegisterComponent implements OnInit {
 
-        registerForm: FormGroup;
+    registerForm: FormGroup;
     model = new UserRegister('', '', '', '', '', '');
 
     formErrors = {
