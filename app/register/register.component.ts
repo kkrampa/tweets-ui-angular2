@@ -6,12 +6,12 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import 'rxjs/add/operator/debounceTime';
 
-import { UserRegister } from './user-register';
-import { UserService } from './user.service';
+import { UserRegister } from './../user/user-register';
+import { UserService } from './../user/user.service';
 
 @Component({
     selector: 'app-register-component',
-    templateUrl: 'app/register.component.html'
+    templateUrl: 'app/register/register.component.html'
 })
 export class RegisterComponent implements OnInit {
 

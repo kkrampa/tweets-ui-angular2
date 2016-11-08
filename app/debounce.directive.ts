@@ -1,10 +1,10 @@
-import { Directive, ElementRef, Renderer, forwardRef } from '@angular/core';
-import { Observable } from "rxjs/Rx";
+import { Directive, ElementRef, Renderer, forwardRef, AfterViewInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive(
-    {selector: '[debounce]', providers: [
+    {selector: '[appDebounce]', providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DebounceDirective),
@@ -12,7 +12,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]}
 )
-export class DebounceDirective implements ControlValueAccessor {
+export class DebounceDirective implements ControlValueAccessor, AfterViewInit {
     onChange = (_) => {};
     onTouched = () => {};
 
@@ -22,14 +22,13 @@ export class DebounceDirective implements ControlValueAccessor {
     ngAfterViewInit() {
         Observable.fromEvent(this.el.nativeElement, 'keyup')
             .debounceTime(1000)
-            .subscribe((event) => {
-                console.log('event');
+            .subscribe((event: any) => {
                 this.onChange(event.target.value);
-            })
+            });
     }
 
     writeValue(value: any): void {
-        var normalizedValue = value ? '' : value;
+        const normalizedValue = value ? '' : value;
         this.renderer.setElementProperty(this.el.nativeElement, 'value', normalizedValue);
     }
 

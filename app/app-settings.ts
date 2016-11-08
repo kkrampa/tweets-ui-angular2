@@ -1,3 +1,1 @@
-export class AppSettings {
-   public static get API_ENDPOINT(): string { return 'http://localhost:8000'; }
-}
+export const API_URL = 'http://localhost:8000';

@@ -5,11 +5,12 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router } from '@angular/router';
 
 
-import { UserService } from './user.service';
+import { UserService } from './../user/user.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
     selector: 'app-login-component',
-    templateUrl: 'app/login.component.html'
+    templateUrl: 'app/login/login.component.html'
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private userService: UserService,
+        private authService: AuthService,
         private toastrManager: ToastsManager,
         private router: Router
     ) {
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit(): void {
         this.userService.login(this.loginForm.value).then(data => {
-            localStorage.setItem('id_token', data.token);
+            this.authService.login(data.token);
             this.toastrManager.success('Login successful!');
             this.router.navigateByUrl('');
         }).catch(response => {

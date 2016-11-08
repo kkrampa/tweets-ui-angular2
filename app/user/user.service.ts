@@ -1,27 +1,25 @@
 import { Http } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 
 
-import { AppSettings } from './app-settings';
-
 @Injectable()
 export class UserService {
-    constructor(private http: Http) {}
+    constructor(private http: Http, @Inject('API_URL') private apiUrl: string) {}
     login(credentials) {
-        return this.http.post(`${AppSettings.API_ENDPOINT}/api-token-auth/`, credentials)
+        return this.http.post(`${this.apiUrl}/api-token-auth/`, credentials)
             .toPromise()
             .then(response => response.json());
     }
 
     register(user) {
-        return this.http.post(`${AppSettings.API_ENDPOINT}/users/register/`, user)
+        return this.http.post(`${this.apiUrl}/users/register/`, user)
             .toPromise()
             .then(response => response.json());
     }
 
     checkUsernameAvailability(username: string) {
-        return this.http.get(`${AppSettings.API_ENDPOINT}/users/check_username_availability/?username=${username}`)
+        return this.http.get(`${this.apiUrl}/users/check_username_availability/?username=${username}`)
             .toPromise()
             .then(response => response.json());
     }
