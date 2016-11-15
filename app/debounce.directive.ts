@@ -20,7 +20,7 @@ export class DebounceDirective implements ControlValueAccessor, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        Observable.fromEvent(this.el.nativeElement, 'keyup')
+        Observable.fromEvent(this.el.nativeElement, 'input')
             .debounceTime(1000)
             .subscribe((event: any) => {
                 this.onChange(event.target.value);

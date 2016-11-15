@@ -8,8 +8,11 @@ import {Tweet} from './tweet.model';
 export class TweetService {
     constructor(private authHttp: AuthHttp, @Inject('API_URL') private apiUrl: string) {}
 
-    addTweet(content) {
-        return this.authHttp.post(`${this.apiUrl}/tweets/`, {content}).toPromise();
+    addTweet(content): Promise<Tweet> {
+        return this.authHttp
+            .post(`${this.apiUrl}/tweets/`, {content})
+            .toPromise()
+            .then(response => <Tweet>response.json());
     }
 
     getTweets(): Promise<Tweet[]> {
