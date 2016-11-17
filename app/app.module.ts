@@ -21,6 +21,11 @@ import {AuthService} from './auth/auth.service';
 import {API_URL} from './app-settings';
 import {TweetService} from './tweet/tweet.service';
 import {TweetListComponent} from './tweet/tweet-list.component';
+import {TweetComponent} from './tweet/tweet.component';
+import {TweetFormComponent} from './tweet/tweet-form.component';
+import {NavigationComponent} from './navigation/navigation.component';
+
+import {SinceNowPipe} from './utils/since-now.pipe';
 
 @NgModule({
     imports: [
@@ -38,10 +43,14 @@ import {TweetListComponent} from './tweet/tweet-list.component';
     declarations: [
         AppComponent,
         HomeComponent,
+        NavigationComponent,
         LoginComponent,
         RegisterComponent,
         TweetListComponent,
-        DebounceDirective
+        TweetComponent,
+        TweetFormComponent,
+        DebounceDirective,
+        SinceNowPipe
     ],
     bootstrap:    [ AppComponent ],
     providers: [

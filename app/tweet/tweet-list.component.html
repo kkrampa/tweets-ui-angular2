@@ -1,5 +1,11 @@
-<div>
-    <div *ngFor="let tweet of tweets" class="row">
-        {{ tweet.content }}
+<div class="row col-md-6">
+    <app-tweet-form (tweetAdded)="addTweet($event)" class="tweet-form"></app-tweet-form>
+    <div *ngFor="let tweet of tweets" class="row tweet">
+        <app-tweet [tweet]="tweet"></app-tweet>
     </div>
+    <style>
+        .tweet {
+            border-bottom: 1px solid #e1e8ed;
+        }
+    </style>
 </div>
