@@ -1,11 +1,17 @@
-import { reducer as tweetsReducer } from './tweets';
+import * as tweets from './tweets';
 
 import { combineReducers } from '@ngrx/store';
 
+import { Tweet } from '../tweet/tweet.model';
+
 const reducers = {
-    tweets: tweetsReducer
+    tweets: tweets.reducer
 };
 
-export function reducer(state: any, action: any) {
+export interface State {
+    tweets: Tweet[];
+}
+
+export function reducer(state: State, action: any) {
     return combineReducers(reducers)(state, action);
 }

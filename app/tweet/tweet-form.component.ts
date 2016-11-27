@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { Tweet } from './tweet.model';
-
 import * as tweets from '../actions/tweets';
 
 @Component({

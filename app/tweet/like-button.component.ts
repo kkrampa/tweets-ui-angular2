@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import * as tweets from '../actions/tweets';
 import { Tweet } from './tweet.model';
 
+import * as root from '../reducers/index';
+
 @Component({
     moduleId: module.id,
     selector: 'app-like-button',
@@ -13,7 +15,7 @@ export class LikeButtonComponent implements OnInit {
     @Input() tweet: Tweet;
     @Output() liked = new EventEmitter();
 
-    constructor(private store: Store<any>) { }
+    constructor(private store: Store<root.State>) { }
 
     ngOnInit() { }
 

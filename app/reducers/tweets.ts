@@ -2,7 +2,8 @@ import * as tweets from '../actions/tweets';
 
 import { Tweet } from '../tweet/tweet.model';
 
-export function reducer(state = [], action: tweets.Actions) {
+
+export function reducer(state: Tweet[] = [], action: tweets.Actions): Tweet[] {
     switch (action.type) {
         case tweets.ActionTypes.LOAD_TWEETS_SUCCESS: {
             return action.payload;
@@ -25,4 +26,3 @@ export function reducer(state = [], action: tweets.Actions) {
         }
     }
 }
-
