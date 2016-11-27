@@ -1,6 +1,6 @@
 <div class="row col-md-6">
-    <app-tweet-form (tweetAdded)="addTweet($event)" class="tweet-form"></app-tweet-form>
-    <div *ngFor="let tweet of tweets" class="row tweet">
+    <app-tweet-form class="tweet-form"></app-tweet-form>
+    <div *ngFor="let tweet of tweets$ | async" class="row tweet">
         <app-tweet [tweet]="tweet"></app-tweet>
     </div>
     <style>

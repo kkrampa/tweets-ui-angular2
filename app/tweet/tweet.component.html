@@ -5,5 +5,7 @@
     </div>
     <div class="row">
         <p>{{ tweet.content }}</p>
+        <div>{{ tweet.likes.length }}</div>
+        <app-like-button [tweet]="tweet" (liked)="tweet.likes = $event.likes"></app-like-button>
     </div>
 </div>

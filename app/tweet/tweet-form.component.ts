@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { TweetService } from './tweet.service';
 import { Tweet } from './tweet.model';
+
+import * as tweets from '../actions/tweets';
 
 @Component({
     selector: 'app-tweet-form',
@@ -9,16 +11,12 @@ import { Tweet } from './tweet.model';
 })
 export class TweetFormComponent implements OnInit {
     @Input() content: string;
-    @Output() tweetAdded = new EventEmitter();
 
-    constructor(private tweetService: TweetService) { }
+    constructor(private store: Store<any>) { }
 
     ngOnInit() { }
 
     addTweet() {
-        this.tweetService.addTweet(this.content).then((tweet: Tweet) => {
-            this.tweetAdded.emit(tweet);
-            this.content = '';
-        });
+        this.store.dispatch(new tweets.AddTweetAction(this.content));
     }
 }

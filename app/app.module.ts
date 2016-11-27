@@ -23,9 +23,15 @@ import {TweetService} from './tweet/tweet.service';
 import {TweetListComponent} from './tweet/tweet-list.component';
 import {TweetComponent} from './tweet/tweet.component';
 import {TweetFormComponent} from './tweet/tweet-form.component';
+import {LikeButtonComponent} from './tweet/like-button.component';
 import {NavigationComponent} from './navigation/navigation.component';
 
 import {SinceNowPipe} from './utils/since-now.pipe';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducer } from './reducers/index';
+import { TweetsEffects } from './effects/tweets';
 
 @NgModule({
     imports: [
@@ -38,7 +44,9 @@ import {SinceNowPipe} from './utils/since-now.pipe';
             { path: '', component: HomeComponent, canActivate: [AuthGuardService]},
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent }
-        ])
+        ]),
+        StoreModule.provideStore(reducer),
+        EffectsModule.run(TweetsEffects),
     ],
     declarations: [
         AppComponent,
@@ -49,6 +57,7 @@ import {SinceNowPipe} from './utils/since-now.pipe';
         TweetListComponent,
         TweetComponent,
         TweetFormComponent,
+        LikeButtonComponent,
         DebounceDirective,
         SinceNowPipe
     ],
